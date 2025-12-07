@@ -10763,19 +10763,16 @@ body > .section {
   overflow: visible;
   border-radius: 0;
 }
-.card:hover {
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.1);
-}
-.card,
-.column-right-shadow {
+.card + .card,
+.card + .column-right-shadow {
   margin-top: 1.5rem;
 }
-.card-image {
+.card .card-image {
   overflow: hidden;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.media + .media {
+.card .media + .media {
   border: none;
   margin-top: 0;
 }
@@ -10941,6 +10938,9 @@ a.article-nav-next span {
 .navbar-main {
   box-shadow: none;
 }
+.navbar-main .navbar-container {
+  overflow-x: auto;
+}
 .navbar-main .navbar-menu,
 .navbar-main .navbar-start,
 .navbar-main .navbar-end {
@@ -10985,6 +10985,12 @@ a.article-nav-next span {
 }
 .navbar-logo img {
   max-height: 1.75rem;
+}
+@media screen and (min-width: 1088px) {
+  .navbar > .container .navbar-menu,
+  .container > .navbar .navbar-menu {
+    margin-right: 0rem;
+  }
 }
 @media screen and (max-width: 768px) {
   footer.footer .level-start {
@@ -11332,6 +11338,9 @@ figure.highlight .section {
   min-width: inherit;
   border-radius: inherit;
 }
+figure.highlight.foldable div.level-left {
+  cursor: pointer;
+}
 .gist table tr:hover {
   background: transparent;
 }
@@ -11341,15 +11350,8 @@ figure.highlight .section {
 .gist .file {
   all: initial;
 }
-#toc {
-  max-height: calc(100vh - 22px);
-  overflow-y: scroll;
-}
 .widget .menu-list li ul {
   margin-right: 0;
-}
-.widget .menu-list a {
-  transition: background-color 0.3s ease-in-out;
 }
 .widget .menu-list .level {
   margin-bottom: 0;
@@ -11364,15 +11366,15 @@ figure.highlight .section {
   align-items: flex-start;
 }
 .widget .menu-list .tag {
-  background: #f5f5f5;
-  color: #4a4a4a;
+  background: $light-grey;
+  color: $white-invert;
 }
 .widget .tags .tag:first-child {
   background: #fcee09;
   color: #121617;
 }
 .widget .tags .tag:last-child {
-  background: #e7e7e7;
+  background: $light-grey;
   color: $white-invert;
 }
 .level.is-multiline {
@@ -11566,6 +11568,9 @@ figure.highlight .section {
   line-height: inherit;
 }
 .MathJax,
+.MathJax_Display,
+.MJXc-display,
+.MathJax_SVG_Display,
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
@@ -11637,10 +11642,6 @@ figure.highlight .section {
   background-color: #f5e703;
 }
 @media screen and (min-width: 1280px) {
-  .is-3-column .container {
-    max-width: 1216px;
-    width: 1216px;
-  }
   .is-1-column .container,
   .is-2-column .container {
     max-width: 960px;
@@ -11648,10 +11649,6 @@ figure.highlight .section {
   }
 }
 @media screen and (min-width: 1472px) {
-  .is-3-column .container {
-    max-width: 1344px;
-    width: 1344px;
-  }
   .is-2-column .container {
     max-width: 1152px;
     width: 1152px;
